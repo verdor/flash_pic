@@ -1,0 +1,10 @@
+<% if @user %>
+  <h1><%= @user.username %> inst4brbn</h1>
+  <h2><%= @token %></h1>
+  <% @recent_media_items.each do |instagram| %>
+    <%= image_tag instagram.images.thumbnail.url %>
+    <%#= image_tag instagram.images.standard_resolution.url %>
+  <% end %>
+<% else %>
+  <%= link_to "Login", insta_oauth_connect_url %>
+<% end %>

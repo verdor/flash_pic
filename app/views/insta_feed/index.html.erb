@@ -1,10 +1,13 @@
+<!-- https://startbootstrap.com/template-overviews/thumbnail-gallery/ -->
 <% if @user %>
-  <h1><%= @user.username %> inst4brbn</h1>
-  <h2><%= @token %></h1>
   <% @recent_media_items.each do |instagram| %>
-    <%= image_tag instagram.images.thumbnail.url %>
-    <%#= image_tag instagram.images.standard_resolution.url %>
+    <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+      <div class="thumbnail" href="#">
+        <%#= image_tag instagram.images.thumbnail.url, :class => "img-responsive",  :alt => instagram.caption.text %>
+        <%= image_tag instagram.images.low_resolution.url, :class => "img-responsive img-rounded",  :alt => instagram.caption.text %>
+        <%#= image_tag instagram.images.standard_resolution.url, :class => "figure-img img-fluid rounded",  :alt => instagram.caption.text %>
+        <p class="text-muted"><%= instagram.caption.text %></p>
+      </div>
+    </div>
   <% end %>
-<% else %>
-  <%= link_to "Login", insta_oauth_connect_url %>
 <% end %>

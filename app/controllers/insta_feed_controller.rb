@@ -4,7 +4,8 @@ class InstaFeedController < ApplicationController
       client = Instagram.client(:access_token => session[:access_token])
       @user = client.user
       @recent_media_items = client.user_recent_media
+    else
+      @recent_media_items = []
     end
-    @token = session[:access_token]
   end
 end

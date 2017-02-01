@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   private
   def check_session
     @session = session[:access_token].present?
+    @token = session[:access_token]
   end
 
 end

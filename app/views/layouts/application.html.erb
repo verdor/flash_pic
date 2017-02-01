@@ -7,8 +7,82 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
-  </body>
+
+    <!-- HEAD   ================================================== -->
+    <div class="site-wrapper">
+
+        <div class="site-wrapper-inner">
+
+          <div class="cover-container">
+
+            <div class="masthead clearfix">
+              <div class="inner">
+                <h3 class="masthead-brand">FlashPic</h3>
+                <nav>
+                  <ul class="nav masthead-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <% if user_signed_in? %>
+                      <li><%= link_to "Logout", insta_oauth_disconnect_url %></li>
+                    <% else %>
+                      <li><%= link_to "Login", insta_oauth_connect_url %></li>
+                    <% end %>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+            <div class="inner cover">
+              <% if user_signed_in? %>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 text-center profile-pic">
+                        <%= image_tag @user.profile_picture, :class => "img-circle",  :alt => @user.full_name %>
+                      </div>
+                      <div class="col-md-8 profile-data">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h1 class="only-bottom-margin"><%= @user.username %></h1>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <strong><%= @user.counts.followed_by %></strong> followers<br>
+                            <strong><%= @user.counts.follows %></strong> following<br>
+                            <strong><%= @user.counts.media %></strong> posts<br><br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% else %>
+                <h1 class="cover-heading">FlashPic</h1>
+                <p class="lead">Online Instagram Web Viewer.</p>
+                <p class="lead">The most comfortable way to browse Instagram content on the web.</p>
+                <p class="lead">New features coming soon!</p>
+                <p class="lead">
+                  <%= link_to "Login with Instagram", insta_oauth_connect_url, class: "btn btn-lg btn-default"%>
+                </p>
+              <% end %>
+                <br/>
+                <div class="row">
+                  <%= yield %>
+                </div>
+            </div>
+
+            <div class="mastfoot">
+              <div class="inner">
+                <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+ </body>
 </html>

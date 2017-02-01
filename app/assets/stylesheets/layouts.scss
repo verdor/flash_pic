@@ -121,6 +121,23 @@ body {
   font-weight: bold;
 }
 
+/*
+ * Gallery
+ */
+
+ .gallery{
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ .thumb {
+     margin-bottom: 30px;
+
+     img {
+       width: 100%;
+     }
+ }
 
 /*
  * Footer
@@ -168,7 +185,7 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 950px;
+    width: 833px;
   }
   .profile-data{
     text-align: left;

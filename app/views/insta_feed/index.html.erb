@@ -1,11 +1,11 @@
 <!-- https://startbootstrap.com/template-overviews/thumbnail-gallery/ -->
 <% if @user %>
   <% @recent_media_items.each do |instagram| %>
-    <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+    <div class="col-lg-4 col-md-6 col-xs-12 thumb">
       <div class="thumbnail" href="#">
-        <%#= image_tag instagram.images.thumbnail.url, :class => "img-responsive",  :alt => instagram.caption.text %>
-        <%= image_tag instagram.images.low_resolution.url, :class => "img-responsive img-rounded",  :alt => instagram.caption.text %>
-        <%#= image_tag instagram.images.standard_resolution.url, :class => "figure-img img-fluid rounded",  :alt => instagram.caption.text %>
+        <%#= image_tag instagram.images.thumbnail.url, :class => "img-responsive img-rounded",  :alt => instagram.caption.text %>
+        <%#= image_tag instagram.images.low_resolution.url, :class => "img-responsive img-rounded",  :alt => instagram.caption.text %>
+        <%= image_tag instagram.images.standard_resolution.url, :class => "img-responsive",  :alt => instagram.caption.text %>
         <p class="text-muted"><%= instagram.caption.text %></p>
       </div>
     </div>

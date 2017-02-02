@@ -9,19 +9,19 @@
   </head>
   <body>
 
-    <!-- HEAD   ================================================== -->
     <div class="site-wrapper">
 
         <div class="site-wrapper-inner">
 
           <div class="cover-container">
-
+            <!-- HEAD   ================================================== -->
             <div class="masthead clearfix">
               <div class="inner">
-                <h3 class="masthead-brand">FlashPic</h3>
+                <h3 class="masthead-brand"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> FlashPic</h3>
                 <nav>
                   <ul class="nav masthead-nav">
                     <li class="active"><a href="#">Home</a></li>
+                    <li><a href="https://github.com/verdor/flashpic">Source Code</a></li>
                     <% if user_signed_in? %>
                       <li><%= link_to "Logout", insta_oauth_disconnect_url %></li>
                     <% else %>
@@ -31,23 +31,33 @@
                 </nav>
               </div>
             </div>
-
+            <!-- BODY   ================================================== -->
             <div class="inner cover">
+              <% if alert %>
+                <!-- ALERT   ================================================== -->
+                <div class="alert alert-cover fade in" role="alert">
+                  <button class="close" data-dismiss="alert">×</button>
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <strong>Note!</strong> Please read the comments carefully. <br/>
+                  <%=raw alert %>
+                </div>
+              <% end %>
               <% if user_signed_in? %>
+                <!-- PROFILE   ================================================== -->
                 <div class="row">
                   <div class="col-md-12">
                     <div class="row">
-                      <div class="col-md-4 text-center profile-pic">
-                        <%= image_tag @user.profile_picture, :class => "img-circle",  :alt => @user.full_name %>
+                      <div class="col-md-4 col-xs-6 text-center profile-pic">
+                        <%= image_tag @user.profile_picture, :class => "img-circle", :alt => @user.full_name %>
                       </div>
-                      <div class="col-md-8 profile-data">
+                      <div class="col-md-8 col-xs-6 profile-data">
                         <div class="row">
                           <div class="col-md-12">
                             <h1 class="only-bottom-margin"><%= @user.username %></h1>
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-12">
                             <strong><%= @user.counts.followed_by %></strong> followers<br>
                             <strong><%= @user.counts.follows %></strong> following<br>
                             <strong><%= @user.counts.media %></strong> posts<br><br>
@@ -67,11 +77,12 @@
                 </p>
               <% end %>
                 <br/>
+                <!-- GALERRY   ================================================== -->
                 <div class="row gallery">
                   <%= yield %>
                 </div>
             </div>
-
+            <!-- FOOT   ================================================== -->
             <div class="mastfoot">
               <div class="inner">
                 <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>

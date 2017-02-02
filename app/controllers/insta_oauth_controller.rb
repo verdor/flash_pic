@@ -13,7 +13,6 @@ class InstaOauthController < ApplicationController
 
   def disconnect
     session[:access_token] = nil
-    session = nil
     redirect_to root_path
   end
 

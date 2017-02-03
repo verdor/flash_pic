@@ -33,13 +33,21 @@
             </div>
             <!-- BODY   ================================================== -->
             <div class="inner cover">
-              <% if alert %>
-                <!-- ALERT   ================================================== -->
+              <!-- ALERT   ================================================== -->
+              <% if flash[:error] %>
+                <div class="alert alert-error fade in" role="alert">
+                  <button class="close" data-dismiss="alert">×</button>
+                  <span class="glyphicon glyphicon glyphicon-fire" aria-hidden="true"></span>
+                  <strong>Oops!</strong> Please contact your system administrator. <br/>
+                  <%=raw flash[:error] %>
+                </div>
+              <% end %>
+              <% if flash[:alert] %>
                 <div class="alert alert-cover fade in" role="alert">
                   <button class="close" data-dismiss="alert">×</button>
                   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                   <strong>Note!</strong> Please read the comments carefully. <br/>
-                  <%=raw alert %>
+                  <%=raw flash[:alert] %>
                 </div>
               <% end %>
               <% if user_signed_in? %>

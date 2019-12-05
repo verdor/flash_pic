@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.0.1'
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12'
 # https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
